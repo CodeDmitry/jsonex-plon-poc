@@ -1,3 +1,4 @@
+// | analogous to json.stringify, but works on functions as well.
 function jsonex_stringify(self) {
     // | cache typeof, as it is used multiple times.
     var T = typeof(self);
@@ -76,6 +77,7 @@ function jsonex_stringify(self) {
     throw new TypeError('Unsupported type passed to JsonEx_toString.');
 }
 
+// | analogous to json.parse, except much more dangerous and powerful, as it will run the specified string with zero considerations.
 function jsonex_parse(strJsonEx) {
     return eval(strJsonEx);
 }
