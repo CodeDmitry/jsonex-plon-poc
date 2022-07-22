@@ -123,3 +123,5 @@ my $myObject = {
 # | working as expected(reminder, brackets are allowed to be implicit in Perl)
 print Dumper eval Dumper eval Dumper $myObject;
 ```
+
+I've heard Lisp can do this as well but it's needlessly complicated, as Lisp tends to pretend Dictionaries(Objects/Associative Lists/Maps) are the spawn of satan, and makes them as difficult to use and hides them as far away from beginners as it can.
