@@ -1,7 +1,7 @@
 # jsonex-poc
-proof of concept of JsonEx, providing isomorphism between javascript objects and strings, enabling portable modules.
+A proof of concept of JsonEx, providing isomorphism between javascript objects and strings, enabling portable modules.
 
-javascript and perl two uniquely powerful languages that can take a deeply nested object from their object model that even contains functions(or subroutines in perl), convert it to a string, evaluate it, convert it to a string, evaluate it, convert it to a string, evaluate it, add three properties, convert it to a string, evaluate it, put it into an array, turn that array to a string, evaluate it, turn it into a string, evaluate it, add it into another object, turn it into a string, and put int back into a file. 
+JavaScript and Perl two uniquely powerful languages that can take a deeply nested object from their object model that even contains functions(or subroutines in perl), convert it to a string, evaluate it, convert it to a string, evaluate it, convert it to a string, evaluate it, add three properties, convert it to a string, evaluate it, put it into an array, turn that array to a string, evaluate it, turn it into a string, evaluate it, add it into another object, turn it into a string, and put int back into a file. 
 
 In essence, this allows a "living module", as files can be read in as objects, functions can be added/removed, stringified, and put back into the file. 
 
