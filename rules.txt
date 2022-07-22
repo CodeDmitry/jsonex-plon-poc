@@ -25,7 +25,7 @@
     web javascript, as well as any other javascript version that is worthy of being
     called a javascript version.
     
-5. object must be wrapped in '()', for JScript compatibility, eg
+5. object strings must be wrapped in '()'(in addition to the curly brackets), for JScript compatibility, eg
     ({
         "a": 2,
         "=": 3
