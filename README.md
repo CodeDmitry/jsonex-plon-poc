@@ -201,7 +201,7 @@ different type implementation. This also means that without arcane magic, this a
 and does not allow "methods" to be attached to objects in an OOP style. There are workarounds involving ties, or custom dynamic
 dispatch implementations, involving doing your own prototype chain plumbing that javascript has. In theory Perl has Sub::Prototype third party module
 as mentioned in this thread https://stackoverflow.com/questions/49490635/how-to-set-the-prototype-of-an-anonymous-perl-function which enables 
-JavaScriptlike behavior, but I have not yet looked into it.
+JavaScriptlike behavior, but I have not yet looked into it, also there are https://metacpan.org/pod/JSPL::PerlClass projects and probably others, but being third party they all aren't particularly worth it. Fortunately, this is rarely needed, although you can still bless the objects created into a string to give them their own type.
 
 That said, it is still conceptually much simpler, and more flexible(allowing stringification/evaluation/extension) than Perl packages are.
 
