@@ -128,10 +128,11 @@ I've heard Lisp can do this as well but it's needlessly complicated, as Lisp ten
 
 **Why**
 
-The reason why is because everyone is obsessed with portable modules, and it's already here, no need to pollute the namespace with packages that cannot be removed after they're imported, just create a simple extended json file such as:
+The reason why is because everyone is obsessed with portable modules, and it's already here, no need to pollute the namespace with packages that cannot be removed after they're imported, just create a simple extended json file(such as myModuleLoadedFromFile), and load that file as a string, evaluate it into a module, then use it, pretend myModuleLoadedFromFile was the result of evaluating the object loaded from file:
 
 ```js
-var myModuleLoadedFromFile = {
+// | pretend the right hand of this expression is loaded from file and evald:
+var myModuleLoadedFromFile = ({
     createGreeterClass: function CreateBoxClass() {
         // | the constructor
         function Greeter(x) {
@@ -161,7 +162,7 @@ var myModuleLoadedFromFile = {
         };
         return Greeter;
     }
-};
+});
 
 var Greeter = myModuleLoadedFromFile.createGreeterClass();
 var greeter = new Greeter;
@@ -171,6 +172,7 @@ greeter.greet();
 or in perl:
 
 ```perl
+# | pretend the right hand side of this expression was loaded from file and eval'd
 my $myModuleLoadedFromFile = {
     createGreeterClass => sub {   
         # constructor
