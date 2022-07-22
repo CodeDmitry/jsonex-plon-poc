@@ -199,7 +199,7 @@ $Greeter->{greet}->($greeter);
 Sadly Perl's type system is based on globally visible packages, meaning theres cannot be two objects with the same type name but 
 different type implementation. This also means that without arcane magic, this approach does not allow "named type" construction,
 and does not allow "methods" to be attached to objects in an OOP style. There are workarounds involving ties, or custom dynamic
-dispatch implementations, involving doing your own prototype chain plumbing that javascript has. In theory Perl has Sub::Prototype module
+dispatch implementations, involving doing your own prototype chain plumbing that javascript has. In theory Perl has Sub::Prototype third party module
 as mentioned in this thread https://stackoverflow.com/questions/49490635/how-to-set-the-prototype-of-an-anonymous-perl-function which enables 
 JavaScriptlike behavior, but I have not yet looked into it.
 
