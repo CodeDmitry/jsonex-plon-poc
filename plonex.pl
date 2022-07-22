@@ -1,4 +1,5 @@
 # | added for the contrast to jsonex.pl
+# | based on _my_ naive NodePL project: https://github.com/CodeDmitry/NodePL/blob/master/NodePL/perl.pm
 use strict;
 use warnings;
 use Data::Dumper;
