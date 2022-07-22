@@ -8,8 +8,8 @@ In essence, this allows a "living module", as files can be read in as objects, f
 In practice it looks like this:
 
 ```js
-jsonex_parse(jsonex_stringify(jsonex_parse(jsonex_stringify(jsonex_parse(jsonex_stringify(
-var myObject = {
+log(jsonex_stringify(jsonex_parse(jsonex_stringify(jsonex_parse(jsonex_stringify(jsonex_parse(jsonex_stringify(
+{
     aNumber1: 2,
     aString: 'Hello, World!',
     aBoolean: true,
@@ -45,5 +45,18 @@ var myObject = {
         }, [1, 2, 3, 4, 5]]
     }
 }
-))))))
+))))))))
+
+// | testing both jscript and node
+function log(s) {
+    try {
+        WScript.echo(s);
+    } catch (e) {
+        try {
+            console.log(s);
+        } catch (e) {
+            throw e;
+        }
+    }
+}
 ```
