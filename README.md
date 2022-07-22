@@ -120,6 +120,6 @@ my $myObject = {
     }
 };
 
-# | working as expected.
+# | working as expected(reminder, brackets are allowed to be implicit in Perl)
 print Dumper eval Dumper eval Dumper $myObject;
 ```
