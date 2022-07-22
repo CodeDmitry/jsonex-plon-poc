@@ -7,6 +7,7 @@ In essence, this allows a "living module", as files can be read in as objects, f
 
 In practice it looks like this:
 
+```js
 jsonex_parse(jsonex_stringify(jsonex_parse(jsonex_stringify(jsonex_parse(jsonex_stringify(
 var myObject = {
     aNumber1: 2,
@@ -45,3 +46,4 @@ var myObject = {
     }
 }
 ))))))
+```
