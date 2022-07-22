@@ -5,7 +5,7 @@ javascript and perl two uniquely powerful languages that can take a deeply neste
 
 In essence, this allows a "living module", as files can be read in as objects, functions can be added/removed, stringified, and put back into the file. 
 
-In practice it looks like this:
+In practice it looks like this(Perl can do this without any user code with Data::Dumper, whereas javascript needs custom code such as jsonex to enable the behavior below to be possible, but it's still better than Python, Lua, Ruby, etc which are incapable of doing the below):
 
 ```js
 log(jsonex_stringify(jsonex_parse(jsonex_stringify(jsonex_parse(jsonex_stringify(jsonex_parse(jsonex_stringify(
@@ -45,7 +45,7 @@ log(jsonex_stringify(jsonex_parse(jsonex_stringify(jsonex_parse(jsonex_stringify
         }, [1, 2, 3, 4, 5]]
     }
 }
-))))))))
+))))))));
 
 // | testing both jscript and node
 function log(s) {
