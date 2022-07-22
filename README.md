@@ -62,7 +62,7 @@ function log(s) {
 ```
 
 
-Perl Object Notation example(PLON):
+Perl Object Notation example(PLON, reminder, "=>" is the same as "," except it turns the thing before "=>" into a string, that is, a => "b" is "a", "b"):
 
 ```perl
 use Data::Dumper;
