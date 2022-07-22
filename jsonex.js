@@ -40,6 +40,52 @@ function jsonex_stringify(self) {
         var result = '[';
              
         for (var i = 0; i < L; ++i) {
+            parts.push(jsonex_stringify(self[i]));
+        }
+        
+        result += parts.join(', ') + ']';
+        return result;
+    } 
+    
+    // | object will be wrapped in () as well, for compatibility with JScript.
+    if (self.constructor === Object) {
+        var keys = [];
+        var values = [];
+        // | we cannot tell the number of keys, as it is not portable.
+        var nkeys = 0; 
+        var result = '({';
+        
+        for (var key in self) {
+            ++nkeys;
+            keys.push(key);
+            values.push(jsonex_stringify(self[key]));
+        }
+        if (nkeys == 0) {
+            return '({})';
+        } else {
+            result += jsonex_stringify(keys[0]) + ': ' + values[0];
+        }
+        
+        for (var i = 1; i < nkeys; ++i) {        
+            result += ', ' + jsonex_stringify(keys[i]) + ': ' + values[i];
+        }
+        
+        result += '})';
+        return result;
+    }
+                
+    throw new TypeError('Unsupported type passed to JsonEx_toString.');
+}
+
+
+    // | In some versions of javascript(JScript), an array is only
+    // | checkable by checking x instanceof Array, it has no Function.prototype.name.
+    if (self instanceof Array) {
+        var parts = [];
+        var L = self.length;
+        var result = '[';
+             
+        for (var i = 0; i < L; ++i) {
             parts.push(JsonEx_toString(self[i]));
         }
         
