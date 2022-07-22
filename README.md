@@ -202,3 +202,4 @@ and does not allow "methods" to be attached to objects in an OOP style. There ar
 dispatch implementations, involving doing your own prototype chain plumbing that javascript has.
 
 That said, it is still conceptually much simpler, and more flexible(allowing stringification/evaluation/extension) than Perl packages are.
+
