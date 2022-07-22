@@ -125,3 +125,78 @@ print Dumper eval Dumper eval Dumper $myObject;
 ```
 
 I've heard Lisp can do this as well but it's needlessly complicated, as Lisp tends to pretend Dictionaries(Objects/Associative Lists/Maps) are the spawn of satan, and makes them as difficult to use and hides them as far away from beginners as it can.
+
+**Why**
+
+The reason why is because everyone is obsessed with portable modules, and it's already here, no need to pollute the namespace with packages that cannot be removed after they're imported, just create a simple extended json file such as:
+
+```js
+var myModuleLoadedFromFile = {
+    createGreeterClass: function CreateBoxClass() {
+        // | the constructor
+        function Greeter(x) {
+            this.x = x;
+        };
+        // | the method(s)
+        Greeter.prototype = {
+            greet: function() {
+                try {
+                    console.log("Hello, World!");
+                } catch (e) {
+                    try {
+                        WScript.Echo("Hello, World");
+                    } catch (e) {
+                        // | we do not know our context, it has no 
+                        // | console.log nor WScript.Echo.
+                        // | lets return a function which can be called
+                        // | with a function that accepts a string
+                        // | and prints a result, or does something 
+                        // | else with it.
+                        return function(howToWrite) {
+                            return howToWrite("Hello, World!");
+                        }
+                    }
+                }
+            }
+        };
+        return Greeter;
+    }
+};
+
+var Greeter = myModuleLoadedFromFile.createGreeterClass();
+var greeter = new Greeter;
+greeter.greet();
+```
+
+or in perl:
+
+```perl
+my $myModuleLoadedFromFile = {
+    createGreeterClass => sub {   
+        # constructor
+        my $Greeter_create = sub {
+            my $x = $_[1];
+            $self->{x} = $x;
+        };
+        $Greeter_greet = sub {
+            print "Hi\n";
+        };
+        
+        return {
+            create => $Greeter_create,
+            greet => $Greeter_greet
+        };
+    }
+};
+
+my $Greeter = $myModuleLoadedFromFile->{createGreeterClass}->();
+my $greeter = $Greeter->{create};
+$Greeter->{greet}->($greeter);
+```
+
+Sadly Perl's type system is based on globally visible packages, meaning theres cannot be two objects with the same type name but 
+different type implementation. This also means that without arcane magic, this approach does not allow "named type" construction,
+and does not allow "methods" to be attached to objects in an OOP style. There are workarounds involving ties, or custom dynamic
+dispatch implementations, involving doing your own prototype chain plumbing that javascript has.
+
+That said, it is still conceptually much simpler, and more flexible(allowing stringification/evaluation/extension) than Perl packages are.
