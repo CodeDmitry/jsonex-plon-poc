@@ -66,6 +66,9 @@ Perl Object Notation example(PLON):
 
 ```perl
 use Data::Dumper;
+use strict;
+use warnings;
+
 $Data::Dumper::Deparse = 1; # <- allow stringification of coderefs.
 $Data::Dumper::Terse = 1; # <- do not include $VAR= in deparse
 $Data::Dumper::Purity = 1; # <- fills in references?
