@@ -1,0 +1,32 @@
+1. no circular structures, eg the following is not allowed to be encoded(or rather, it is allowed, but don't blame us for the infinite loop, your problem).
+    var f = {};
+    f.f = f;
+    
+2. only supported types:
+    1. Number, both integral and fractional, but not infinity nor negative infinity.
+    2. String, with only \n being allowed escape code.
+    3. Boolean
+    4. null
+    5. Function, inheritence chain is not preserved.
+    6. Object(as a hash table) of string to supported types only,
+        only properties discoverable with "for in" loops are supported.
+    7. Array of supported types only.
+    
+3. some types which are not supported, or undefined behavior:
+    1. the `undefined` type
+    2. NaN
+    3. Symbol
+    4. Set
+    5. Uint8Array, Uint16Array, Uint32Array, BigUint64Array,
+        or any other other kind of non-Array Array type.
+
+4. it must work on every javascript version, from Microsoft JScript,
+    to nodejs, to old nashorn javascript before oracle removed it,
+    web javascript, as well as any other javascript version that is worthy of being
+    called a javascript version.
+    
+5. object must be wrapped in '()', for JScript compatibility, eg
+    ({
+        "a": 2,
+        "=": 3
+    })
