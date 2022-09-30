@@ -8,12 +8,14 @@ $Data::Dumper::Terse = 1; # <- do not include $VAR= in deparse
 $Data::Dumper::Purity = 1; # <- fills in references?
 $Data::Dumper::Indent = 1; # <- indents our dumper of structures.
 
+# the quotes around keys is optional, but without it, it is much harder to visually
+# parse, especially as a beginner.
 my $myObject = {
-    aNumber1 => 2,
-    aString => 'Hello, World!',
-    aBoolean => 1,
-    aNull => undef,
-    aFunction => sub {
+    'aNumber1' => 2,
+    'aString' => 'Hello, World!',
+    'aBoolean' => 1,
+    'aNull' => undef,
+    'aFunction' => sub {
         my $a = $_[0];
         return sub {
             my $b = $_[0];
@@ -23,7 +25,7 @@ my $myObject = {
             }
         }
     },
-    anArray => [1, 'Hey', 0, undef, sub {
+    'anArray' => [1, 'Hey', 0, undef, sub {
         my $a = $_[0];
         return sub {
             my $b = $_[0];
@@ -33,12 +35,12 @@ my $myObject = {
             }
         }
     }],
-    aSubObject => {
-        aNumber2 => 0,
-        aString2 => 'Bye',
-        aBoolean => 0,
-        aNull => undef,
-        aFunction => sub {
+    'aSubObject' => {
+        'aNumber2' => 0,
+        'aString2' => 'Bye',
+        'aBoolean' => 0,
+        'aNull' => undef,
+        'aFunction' => sub {
             my $a = $_[0];
             return sub {
                 my $b = $_[0];
@@ -48,9 +50,16 @@ my $myObject = {
                 }
             }
         },
-        anArray => [9, 'one', 1, undef, sub { 
-            return 'A result from a function'; 
-        }, [1, 2, 3, 4, 5]]
+        'anArray' => [
+            9, 
+            'one', 
+            1, 
+            undef, 
+            sub { 
+                return 'A result from a function'; 
+            }, 
+            [1, 2, 3, 4, 5]
+        ]
     }
 };
 
