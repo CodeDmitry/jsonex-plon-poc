@@ -10,10 +10,10 @@ $Data::Dumper::Terse = 1;
 
 # | Turns the given argument into a string.
 sub stringify {
-    return Dumper $_[0];
+    return Dumper($_[0]);
 }
 
 # Turns the given argument string into an object of the perl typesystem.
 sub plonex_parse {
-    return eval $_[0];
+    return eval($_[0]);
 }
